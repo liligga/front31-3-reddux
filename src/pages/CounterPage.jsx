@@ -1,18 +1,30 @@
+import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
 const CounterPage = () => {
-  const val = useSelector((state) => state.counter);
+  const [changeBy, setChangeBy] = useState(1);
+  const val = useSelector((state) => state.counter.value);
   const dispatch = useDispatch();
 
   const onIncrase = () => {
-    dispatch({ type: "INCREMENT" });
+    dispatch({ 
+      type: "INCREMENT", 
+      payload: Number(changeBy) 
+    });
   };
+
+  const onDecrase = () => {
+    dispatch({ 
+      type: "DECREMENT", 
+      payload: Number(changeBy) 
+    });
+  }
 
   return (
     <div className="w-full flex flex-col justify-center gap-3">
       <span className="text-2xl col-span-full">Счетчик</span>
       <div className="w-full flex justify-center items-center gap-4">
-        <button className="w-8 bg-slate-300 px-2 py-1 rounded-md">-</button>
+        <button className="w-8 bg-slate-300 px-2 py-1 rounded-md" onClick={onDecrase}>-</button>
         <span>{val}</span>
         <button
           className="w-8 bg-slate-300 px-2 py-1 rounded-md"
@@ -20,6 +32,14 @@ const CounterPage = () => {
         >
           +
         </button>
+      </div>
+      <div>
+        <input
+          type="number"
+          className="w-30 bg-slate-300 px-2 py-1 rounded-md"
+          value={changeBy}
+          onChange={(e) => setChangeBy(e.target.value)}
+        />
       </div>
     </div>
   );

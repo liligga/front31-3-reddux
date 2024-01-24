@@ -1,10 +1,12 @@
 import { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 
 
 const UserPage = () => {
   const [userName, setUserName] = useState('')
   const [userEmail, setUserEmail] = useState('')
   const [userPhone, setUserPhone] = useState('')
+  const user = useSelector(state => state.user.user)
 
   const handleSubmit = (e) => {
     e.preventDefault();
