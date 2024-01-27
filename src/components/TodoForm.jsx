@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 
+import { addTodo } from '../store/todosReducer';
+
 
 const TodoForm = () => {
   const [newTodo, setNewTodo] = useState('');
@@ -10,10 +12,7 @@ const TodoForm = () => {
     e.preventDefault();
     if (!newTodo) return;
 
-    dispatch({
-      type: 'ADD_TODO',
-      payload: newTodo
-    })
+    dispatch(addTodo(newTodo))
     setNewTodo('');
   }
 
