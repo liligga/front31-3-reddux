@@ -14,3 +14,9 @@ export const userReducer = (state = defaultState, action) => {
       return state;
   }
 };
+
+// action creators
+export const changeUserName = (payload) => ({
+  type: "CHANGE_NAME",
+  payload
+});

@@ -16,3 +16,14 @@ export const counterReducer = (state = defaultState, action) => {
       return state;
   }
 };
+
+// action creator - функция, которая создает действие
+export const increaseCounter = (payload) => ({ 
+  type: "INCREMENT", 
+  payload 
+});
+
+export const decreaseCounter = (payload) => ({
+  type: "DECREMENT",
+  payload,
+});
