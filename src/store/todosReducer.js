@@ -23,7 +23,7 @@ export const todosReducer = (state = defaultState, action) => {
       console.log(action);
       return {
         ...state,
-        items: state.items.filter((item) => item !== action.payload),
+        items: state.items.filter((item) => item.id !== action.payload),
       };
     default:
       return state;
